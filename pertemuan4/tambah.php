@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION['login'])) {
+if(!isset($_SESSION['login'])) {
   header("Location: login.php");
   exit;
 }
@@ -36,7 +36,7 @@ if (isset($_POST['tambah'])) {
 
 <body>
   <h3>Form Tambah Data Mahasiswa</h3>
-  <form action="" method="POST">
+  <form action="" method="POST" enctype="multipart/form-data">
     <ul>
       <li>
         <label for="nama">Nama :</label>
@@ -54,7 +54,7 @@ if (isset($_POST['tambah'])) {
       </li>
       <li>
         <label for="gambar">Gambar :</label>
-        <input type="text" name="gambar" id="gambar" required>
+        <input type="file" name="gambar" id="gambar">
       </li>
       <li>
         <button type="submit" name="tambah">Tambah Data!</button>
