@@ -25,3 +25,16 @@ keyword.addEventListener("keyup", function () {
     .then((response) => response.text())
     .then((response) => (container.innerHTML = response));
 });
+
+// Preview Image untuk tambah dan ubah
+function previewImage() {
+  const gambar = document.querySelector(".gambar");
+  const imgPreview = document.querySelector(".img-preview");
+
+  const OFReader = new FileReader();
+  OFReader.readAsDataURL(gambar.files[0]);
+
+  OFReader.onload = function (oFREvent) {
+    imgPreview.src = oFREvent.target.result;
+  };
+}
