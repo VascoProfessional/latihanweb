@@ -12,15 +12,24 @@ function query($query)
   $result = mysqli_query($conn, $query);
 
   // jika hasilnya hanya 1 data
-  if (mysqli_num_rows($result) == 1) {
-    return mysqli_fetch_assoc($result);
-  }
+  // if (mysqli_num_rows($result) == 1) {
+  //   return mysqli_fetch_assoc($result);
+  // }
 
   $rows = [];
   while ($row = mysqli_fetch_assoc($result)) {
     $rows[] = $row;
   }
   return $rows;
+}
+
+function queryindex($query)
+{
+  $conn = koneksi();
+
+  $result = mysqli_query($conn, $query);
+return mysqli_fetch_assoc($result);
+  
 }
 
 function upload()
@@ -109,8 +118,8 @@ function hapus($id)
   $conn = koneksi();
 
   // menghapus gambar di folder img
-  $mhs = query("SELECT * FROM mahasiswa WHERE id = $id");
-  if ($mhs['gambar'] != 'nophoto') {
+  $mhs = queryindex("SELECT * FROM mahasiswa WHERE id = $id");
+  if ($mhs['gambar'] != 'nophoto.jpg') {
     unlink('img/' . $mhs['gambar']);
   }
 

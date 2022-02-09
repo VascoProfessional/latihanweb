@@ -8,7 +8,9 @@ if(!isset($_SESSION['login'])) {
 
 require 'functions.php';
 $mahasiswa = query("SELECT * FROM mahasiswa");
-
+// print "<pre>";
+// print_r($mahasiswa);
+// print "</pre>";
 // ketika tombol cari di click
 if(isset($_POST['cari'])) {
   $mahasiswa = cari($_POST['keyword']);
